@@ -9,9 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-icons": "^1.1.1",
+    "@stitches/react": "^1.2.8",
     "@types/node": "18.11.10",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
+    "card-validator": "^8.1.1",
+    "classmany": "^1.0.1",
+    "classnames": "^2.3.2",
+    "credit-card-type": "^9.1.0",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "next": "13.0.6",
