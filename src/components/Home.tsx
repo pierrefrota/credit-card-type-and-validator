@@ -1,6 +1,7 @@
 import { blackA, green, mauve, red, violet } from "@radix-ui/colors";
 import { keyframes, styled } from "@stitches/react";
 import classNames from "classnames";
+import Image from "next/image";
 import { useState } from "react";
 import { ICardData } from "../@types";
 import { inputMask } from "../utils/inputMask";
@@ -42,9 +43,9 @@ const DialogDemo = () => {
         />
         <Label htmlFor="username">
           {cardData?.flagImg ? (
-            <img src={cardData?.flagImg} alt={cardData?.card?.name} width={46} />
+            <Image src={cardData?.flagImg} alt={cardData?.card?.name} width={46} height={46} />
           ) : (
-            <img src="assets/images/flags/no-img.png" alt="Sem cartão" width={46} />
+            <Image src="/assets/images/flags/no-img.png" alt="Sem cartão" width={46} height={46} />
           )}
         </Label>
       </Fieldset>

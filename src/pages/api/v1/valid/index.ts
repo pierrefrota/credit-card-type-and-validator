@@ -2,6 +2,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { checkIfCardIsValid } from "../../../../utils/checkIfCardIsValid";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
+  const referer = req.headers.referer;
+  const secureRefer = true;
+
   if (req.method !== "GET") {
     return res.status(405).json({
       message: "Method not allowed.",
@@ -9,18 +12,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
   }
 
-  if (!req.headers.token) {
-    return res.status(401).json({
-      error: true,
-      message: "Token not provided.",
-    });
-  }
+  if (!secureRefer) {
+    if (!req.headers.token) {
+      return res.status(401).json({
+        error: true,
+        message: "Token not provided.",
+      });
+    }
 
-  if (req.headers.token !== process.env.TOKEN) {
-    return res.status(401).json({
-      error: true,
-      message: "Your token is invalid.",
-    });
+    if (req.headers.token !== process.env.TOKEN) {
+      return res.status(401).json({
+        error: true,
+        message: "Your token is invalid.",
+      });
+    }
   }
 
   if (!req.query.card) {
