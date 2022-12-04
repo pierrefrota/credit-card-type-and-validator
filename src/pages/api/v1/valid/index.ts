@@ -3,7 +3,8 @@ import { checkIfCardIsValid } from "../../../../utils/checkIfCardIsValid";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   const referer = req.headers.referer;
-  const secureRefer = true;
+  const secureReferer = referer?.includes(process.env.SECURE_REFERER!);
+  // const secureReferer = true;
 
   if (req.method !== "GET") {
     return res.status(405).json({
@@ -12,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     });
   }
 
-  if (!secureRefer) {
+  if (!secureReferer) {
     if (!req.headers.token) {
       return res.status(401).json({
         error: true,
