@@ -31,8 +31,8 @@ const DialogDemo = () => {
       <DialogDescription>Digite o cartão para realizar os testes (use sites geradores de cartão).</DialogDescription>
       <Fieldset
         className={classNames({
-          valid: card.length >= 15 && cardData?.isValid!,
-          invalid: card.length >= 15 && !cardData?.isValid!,
+          valid: card.length >= 18 && cardData?.isValid!,
+          invalid: card.length >= 18 && !cardData?.isValid!,
         })}
       >
         <Input
