@@ -3,7 +3,7 @@ import { checkIfCardIsValid } from "../../../../utils/checkIfCardIsValid";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   const referer = req.headers.referer;
-  const secureReferer = referer?.includes(process.env.SECURE_REFERER!);
+  const secureReferer = referer?.includes(process.env.NEXT_PUBLIC_SECURE_REFERER!);
   // const secureReferer = true;
 
   if (req.method !== "GET") {
@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       });
     }
 
-    if (req.headers.token !== process.env.TOKEN) {
+    if (req.headers.token !== process.env.NEXT_PUBLIC_TOKEN) {
       return res.status(401).json({
         error: true,
         message: "Your token is invalid.",
